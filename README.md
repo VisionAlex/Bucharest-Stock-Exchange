@@ -1,2 +1,2 @@
 # Bucharest-Stock-Exchange
-web scraper for the Bucharest Stock Exchange
+Web scraper for the Bucharest Stock Exchange.
