@@ -29,6 +29,18 @@ class Bvb:
 			ticker_list.append(str(c).split(';')[0].strip('b\''))
 		return ticker_list[1:]
 			
+	@staticmethod
+	def get_ticker_name_price(ticker):
+		url =''.join(['http://bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=', ticker])
+		response = requests.get(url)
+		soup = BeautifulSoup(response.text, 'lxml')
+		try:
+			name = soup.h2.text.strip("\r\n ")
+			price = float(soup.strong.text)
+		except Exception as e:
+			print(e)
+		if name and price:
+			return (ticker, name, price)
 
 #ticker_list = Bvb.get_ticker_list()
 #print(ticker_list)
